@@ -2,7 +2,6 @@ import React from 'react';
 import './App.sass';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/home';
-import { useAuth } from './api/auth/context';
 import AuthGuard from './api/auth/guard';
 import Dashboard from './pages/dashboard';
 import NotFound from './components/util/NotFound';

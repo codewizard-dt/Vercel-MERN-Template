@@ -6,6 +6,7 @@ export interface LoginProps extends PropsWithChildren {
 }
 
 const Login = ({ children }: LoginProps) => {
+  // eslint-disable-next-line
   const [token, setToken] = useAuth()
   const auth = useAuthMethods()
   const [credentials, setCredentials] = useState({

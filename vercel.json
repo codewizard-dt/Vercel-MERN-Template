@@ -1,18 +1,9 @@
 {
-  "builds": [
-    {
-      "src": "./server/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "./client/build",
-      "use": "@vercel/static"
-    }
-  ],
+  "outputDirectory": "./server/build",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/server/server.js"
+      "destination": "/server/build/server.js"
     }
   ]
 }

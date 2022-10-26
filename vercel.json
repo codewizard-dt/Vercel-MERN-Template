@@ -1,7 +1,7 @@
 {
   "outputDirectory": "./server/build",
   "functions": {
-    "server/build/server.js": {
+    "/server/build/server.js": {
       "includeFiles": "client/build"
     }
   },

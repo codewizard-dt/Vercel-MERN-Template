@@ -6,6 +6,11 @@ import apiRouter from './api'
 import { checkAuth } from './middleware/auth'
 
 const PORT = process.env.PORT || 3001
+const isProduction = process.env.NODE_ENV === 'production'
+
+if (!isProduction) {
+  require('dotenv').config({ path: path.join(__dirname, '../.env') })
+}
 
 const app = express()
 app.use(function (req, res, next) {
@@ -18,8 +23,8 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+if (isProduction) {
+  app.use(express.static(path.join(__dirname, '../../client/build')));
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/build/index.html'))
   })

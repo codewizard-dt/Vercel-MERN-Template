@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "build": "tsc",
     "start:build": "tsc -w",
-    "start:run": "nodemon build/server.js --trace-deprecation",
+    "start:run": "nodemon build/server.js",
     "start": "concurrently npm:start:*"
   },
   "keywords": [

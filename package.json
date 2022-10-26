@@ -1,0 +1,31 @@
+{
+  "name": "vercel-mern-template",
+  "version": "1.0.0",
+  "description": "Barebones MERN Stack template configured for Vercel",
+  "main": "index.js",
+  "homepage": "https://github.com/codewizard-dt/Vercel-MERN-Template#readme",
+  "scripts": {
+    "test": "jest",
+    "dev:client": "npm run start --prefix client",
+    "dev:server": "npm run start --prefix server",
+    "dev": "concurrently npm:dev:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewizard-dt/Vercel-MERN-Template.git"
+  },
+  "keywords": [
+    "mern",
+    "template",
+    "vercel",
+    "typescript"
+  ],
+  "author": "David Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codewizard-dt/Vercel-MERN-Template/issues"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0"
+  }
+}

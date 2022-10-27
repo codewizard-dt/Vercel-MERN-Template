@@ -1,9 +1,13 @@
 {
-  "outputDirectory": "./server/build",
-  "rewrites": [
+  "headers": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Authorization, Origin, Content-Type, Accept"
+        }
+      ]
     }
   ]
 }

@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter basename='/'>
       <div className="app">
-        <h1>Vercel?</h1>
+        <h1>Vercel MERN Stack</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/' element={<AuthGuard type="user" />}>

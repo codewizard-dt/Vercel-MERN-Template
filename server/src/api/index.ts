@@ -19,29 +19,40 @@ if (!isProduction) {
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Authorization, Origin, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Authorization, Origin, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 /**
  * Routes
  */
-app.get('/hello', hello)
-app.use('/auth', authRouter)
+app.get('/api/hello', hello)
+app.use('/api/auth', authRouter)
 
-// if (isProduction) {
-//   /** Serve static React build */
-//   app.use(express.static(path.join(__dirname, '../../client/build')));
-// }
-
-/** Serve app entry point */
-if (!isProduction) app.use(express.static(path.join(__dirname, '../public')));
+/** Define client build path based on environment */
+let clientBuildPath = isProduction ? '../public' : '../../../client/build'
+if (!isProduction) {
+  /** 
+   * If not in production, serve static files 
+   * When in production Vercel will serve them automatically
+   */
+  app.use(express.static(path.join(__dirname, clientBuildPath)))
+}
+/** 
+ * Serve the landing page
+ */
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'))
+  res.sendFile(path.join(__dirname, clientBuildPath, 'index.html'))
+})
+/**
+ * Catch all other routes and serve the landing page
+ */
+app.get('**', (req, res) => {
+  res.sendFile(path.join(__dirname, clientBuildPath, 'index.html'))
 })
 
 app.use(checkAuth)
@@ -51,4 +62,4 @@ app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}!`);
 })
 
-// export default apiRouter
+export default app

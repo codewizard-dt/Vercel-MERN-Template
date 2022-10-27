@@ -2,7 +2,7 @@
   "outputDirectory": "./server/build",
   "functions": {
     "./index.js": {
-      "memory": 3004
+      "memory": 3008
     }
   },
   "rewrites": [

@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "client/build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)",
@@ -9,6 +9,16 @@
           "value": "Authorization, Origin, Content-Type, Accept"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }

@@ -1,42 +1,51 @@
-// import express from 'express'
-// import path from 'path'
+import express, { Router } from 'express'
+import path from 'path'
+import authRouter from "./routes";
+import { checkAuth } from './middleware/auth'
 
-// // import apiRouter from './api'
-// import { checkAuth } from './middleware/auth'
+const isProduction = process.env.NODE_ENV === 'production'
+const PORT = process.env.PORT || 3001
+if (!isProduction) {
+  require('dotenv').config({ path: path.join(__dirname, '../.env') })
+}
 
-// const PORT = process.env.PORT || 3001
-// const isProduction = process.env.NODE_ENV === 'production'
+/**
+ * Server setup
+ */
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-// if (!isProduction) {
-//   require('dotenv').config({ path: path.join(__dirname, '../.env') })
-// }
+/**
+ * Routes 
+ */
+const vercelApi = Router()
+/** Add all routes to the vercelApi Router */
+vercelApi.use('/auth', authRouter)
+/** Apply vercelApi Router to /api endpoint */
+app.use('/api', vercelApi)
 
-// const app = express()
-// app.use(function (req, res, next) {
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Authorization, Origin, Content-Type, Accept"
-//   );
-//   next();
-// });
-// app.use(express.json())
+let clientBuildPath = '../../../client/build'
+if (!isProduction) {
+  /** 
+   * IN PRODUCTION, ON VERCEL, NONE OF THIS IS NECESSARY
+   * Serve static files 
+   * Serve landing page
+   * Catch all other routes and serve the landing page
+   */
+  app.use(express.static(path.join(__dirname, clientBuildPath)))
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, clientBuildPath, 'index.html'))
+  })
+  app.get('**', (req, res) => {
+    res.sendFile(path.join(__dirname, clientBuildPath, 'index.html'))
+  })
+}
 
-// app.use(express.urlencoded({ extended: true }))
+app.use(checkAuth)
 
-// if (isProduction) {
-//   app.use(express.static(path.join(__dirname, '../../client/build')));
-//   app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../../client/build/index.html'))
-//   })
-// } else {
-//   app.get('/', (req, res) => {
-//     res.send("This is a backend route")
-//   })
-// }
+app.listen(PORT, () => {
+  console.log(`API server running on port ${PORT}!`);
+})
 
-// app.use(checkAuth)
-// // app.use('/api', apiRouter)
-
-// app.listen(PORT, () => {
-//   console.log(`API server running on port ${PORT}!`);
-// })
+export default app

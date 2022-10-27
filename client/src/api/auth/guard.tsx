@@ -7,7 +7,7 @@ export interface AuthGuardProps extends PropsWithChildren {
 }
 
 const AuthGuard = ({ children, type }: AuthGuardProps) => {
-  const [token] = useAuth()
+  const token = useAuth()
   const { state } = useLocation()
   const url = state?.from ? state.from : '/'
   if (type === 'user') {

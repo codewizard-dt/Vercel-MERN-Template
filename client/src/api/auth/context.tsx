@@ -11,7 +11,7 @@ interface Credentials {
 }
 
 
-class Auth {
+class TokenService {
   constructor(public tokenName: string = 'auth-token') { }
   get isValid(): boolean {
     let token = this.getToken()
@@ -35,24 +35,37 @@ class Auth {
   async login(credentials: Credentials) {
     return axiosApi.post('/auth/login', credentials).then(({ data }) => this.setToken(data?.token))
   }
-
 }
 
-export const AuthService = new Auth()
-export const AuthContext = createContext<[string | null, (token: string | null) => void, Auth]>([
-  null, // initial token
-  () => { }, // initial setter
-  AuthService // auth methods
-])
-export const useAuth = (): [string | null, (token: string | null) => void] => {
-  let [token, setToken] = useContext(AuthContext)
-  return [token, setToken]
+interface AuthContextI {
+  token: string | null
+  login: (data: Credentials) => void
+  logout: () => void
+  authMethods: TokenService
 }
-export const useAuthMethods = () => useContext(AuthContext)[2]
+export const AuthMethods = new TokenService()
+export const AuthContext = createContext<AuthContextI>({
+  token: null, // initial token
+  login: async (data) => { }, // login placeholder
+  logout: () => { }, // logout placeholder
+  authMethods: AuthMethods // TokenService
+})
+
+export const useAuth = () => useContext(AuthContext).token
+export const useLogin = () => useContext(AuthContext).login
+export const useLogout = () => useContext(AuthContext).logout
+export const useAuthMethods = () => useContext(AuthContext).authMethods
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [token, setToken] = useState(AuthService.getToken())
-  return <AuthContext.Provider value={[token, setToken, AuthService]}>
+  const [token, setToken] = useState(AuthMethods.getToken())
+  const login = async (data: Credentials) => {
+    let token = await AuthMethods.login(data)
+    if (token) setToken(token)
+  }
+  const logout = () => {
+    setToken(null)
+  }
+  return <AuthContext.Provider value={{ token, login, logout, authMethods: AuthMethods }}>
     {children}
   </AuthContext.Provider>
 }

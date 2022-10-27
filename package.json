@@ -8,7 +8,7 @@
     "test": "jest",
     "install": "",
     "postinstall": "npm i --prefix client && npm i --prefix server",
-    "build": "npm run build --prefix client && npm run build --prefix server && cp -r ./client/build/. ./server/build/public",
+    "build": "npm run build --prefix client && npm run build --prefix server && ./deploy.sh",
     "dev:client": "npm run start --prefix client",
     "dev:server": "npm run start --prefix server",
     "dev": "concurrently npm:dev:*"
@@ -30,5 +30,8 @@
   },
   "devDependencies": {
     "concurrently": "^7.5.0"
+  },
+  "dependencies": {
+    "commander": "^9.4.1"
   }
 }

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useState } from 'react'
-import { useAuth, useAuthMethods } from '../../api/auth/context'
+import { useAuth, useAuthMethods, useLogin } from '../../api/auth/context';
 
 export interface LoginProps extends PropsWithChildren {
 
@@ -7,7 +7,7 @@ export interface LoginProps extends PropsWithChildren {
 
 const Login = ({ children }: LoginProps) => {
   // eslint-disable-next-line
-  const [token, setToken] = useAuth()
+  const login = useLogin()
   const auth = useAuthMethods()
   const [credentials, setCredentials] = useState({
     username: '',
@@ -21,9 +21,7 @@ const Login = ({ children }: LoginProps) => {
   }
   const handleSubmit = async (ev: { preventDefault: () => void }) => {
     ev.preventDefault()
-    let result = await auth.login(credentials)
-    setToken(result)
-    console.log(result)
+    login(credentials)
   }
   return (
     <form onSubmit={handleSubmit}>

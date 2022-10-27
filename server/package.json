@@ -2,12 +2,11 @@
   "name": "vercel-mern-server",
   "version": "1.0.0",
   "description": "Server side Vercel package",
-  "main": "server.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "start:build": "tsc -w",
-    "start:run": "nodemon build/server.js",
+    "start:run": "nodemon build/index.js",
     "start": "concurrently npm:start:*"
   },
   "keywords": [

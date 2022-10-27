@@ -7,10 +7,10 @@
   "scripts": {
     "test": "jest",
     "install": "",
-    "postinstall": "npm i --prefix client && npm i --prefix server",
-    "build": "npm run build --prefix client && npm run build --prefix server && ./deploy.sh",
+    "postinstall": "npm i --prefix client && npm i --prefix api",
+    "build": "npm run build --prefix client && npm run build --prefix api && ./deploy.sh",
     "dev:client": "npm run start --prefix client",
-    "dev:server": "npm run start --prefix server",
+    "dev:api": "npm run start --prefix api",
     "dev": "concurrently npm:dev:*"
   },
   "repository": {

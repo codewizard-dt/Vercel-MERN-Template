@@ -14,15 +14,15 @@ echo "Vercel deployment script"
 
 # cp -r ./client/build/* ./dist && echo " - /client/build/* moved to /dist"
 
-echo ""
-echo "Express build step"
-if [ -d "dist/api" ]; then
-  rm -r api/*
-else
-  mkdir api && echo " - /api created for vercel express deployment"
-fi
+# echo ""
+# echo "Express build step"
+# if [ -d "api" ]; then
+#   rm -r api/*
+# else
+#   mkdir api && echo " - /api created for vercel express deployment"
+# fi
 
-cp -r ./server/build/* ./api && echo " - /server/build/* moved to /api"
+# cp -r ./server/build/* ./api && echo " - /server/build/* moved to /api"
 
 echo ""
 echo " > Build completed"

@@ -1,7 +1,9 @@
 {
   "outputDirectory": "./server/build",
   "functions": {
-    "./index.js": {}
+    "./index.js": {
+      "memory": 3004
+    }
   },
   "rewrites": [
     {

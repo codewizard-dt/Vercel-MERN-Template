@@ -1,5 +1,8 @@
 {
   "outputDirectory": "./server/build",
+  "functions": {
+    "./index.js": {}
+  },
   "rewrites": [
     {
       "source": "/(.*)",

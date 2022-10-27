@@ -1,26 +1,29 @@
 #!/bin/sh
 
-echo "\nVercel deployment script"
+echo ""
+echo "Vercel deployment script"
 # create /dist folder if does not exist
-[ ! -d "dist" ] && mkdir dist && echo " - /dist created \n"
-
-echo "\nReact build step"
-# either create /dist/public or delete its contents
-if [ -d "dist/public" ]; then
-  rm -r dist/public/*
+if [ -d "dist" ]; then
+  rm -r dist/*
 else
-  mkdir dist/public && echo " - /dist/public created"
+  mkdir dist && echo " - /dist created" 
 fi
 
-mv ./client/build/* ./dist/public && echo " - /client/build/* moved to dist/public"
+echo ""
+echo "React build step"
 
-echo "\nExpress build step"
+mv ./client/build/* ./dist && echo " - /client/build/* moved to /dist"
+
+echo ""
+echo "Express build step"
 if [ -d "dist/api" ]; then
   rm -r dist/api/*
 else
   mkdir dist/api && echo " - /dist/api created for vercel express deployment"
 fi
 
-mv ./server/build/* ./dist/api && echo " - /server/build/* moved to dist/api"
+mv ./server/build/* ./dist/api && echo " - /server/build/* moved to /dist/api"
 
-echo "\n > Build completed\n"
+echo ""
+echo " > Build completed"
+echo ""

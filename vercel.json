@@ -11,15 +11,10 @@
       ]
     }
   ],
-  "functions": {
-    "api/src/index.ts": {
-      "memory": 1024
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api"
+      "destination": "/api/src/index.ts"
     },
     {
       "source": "/(.*)",

@@ -1,7 +1,8 @@
 import express, { Router } from 'express'
 import path from 'path'
-import authRouter from "./routes";
+import authRouter from "./routes/auth";
 import { checkAuth } from './middleware/auth'
+import test from './routes/test';
 
 const isProduction = process.env.NODE_ENV === 'production'
 const PORT = process.env.PORT || 3001
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 const vercelApi = Router()
 /** Add all routes to the vercelApi Router */
 vercelApi.use('/auth', authRouter)
+vercelApi.get('/test', test)
 /** Apply vercelApi Router to /api endpoint */
 app.use('/api', vercelApi)
 

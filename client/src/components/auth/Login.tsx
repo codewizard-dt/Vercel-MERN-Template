@@ -1,17 +1,22 @@
-import { PropsWithChildren, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { useLogin } from '../../api/auth/context';
+import axiosApi from '../../api/axios';
 
 export interface LoginProps extends PropsWithChildren {
 
 }
 
 const Login = ({ children }: LoginProps) => {
-  // eslint-disable-next-line
   const login = useLogin()
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
   })
+
+  useEffect(() => {
+    axiosApi.get('/test').then(d => console.log(d))
+  }, [])
+
   const handleChange = ({ target: { name, value } }: { target: HTMLInputElement }) => {
     setCredentials({
       ...credentials,

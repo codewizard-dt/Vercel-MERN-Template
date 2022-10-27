@@ -1,14 +1,9 @@
 {
   "outputDirectory": "./server/build",
-  "functions": {
-    "./server/build/server.js": {
-      "includeFiles": "client/build"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/server/build/server.js"
+      "destination": "/server/build/index.js"
     }
   ]
 }

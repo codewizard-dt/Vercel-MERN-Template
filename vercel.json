@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "client/build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)",
@@ -11,6 +11,11 @@
       ]
     }
   ],
+  "functions": {
+    "api/index.js": {
+      "memory": 1024
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",

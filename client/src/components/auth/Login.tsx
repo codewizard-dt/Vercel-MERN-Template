@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useState } from 'react'
-import { useAuth, useAuthMethods, useLogin } from '../../api/auth/context';
+import { useLogin } from '../../api/auth/context';
 
 export interface LoginProps extends PropsWithChildren {
 
@@ -8,7 +8,6 @@ export interface LoginProps extends PropsWithChildren {
 const Login = ({ children }: LoginProps) => {
   // eslint-disable-next-line
   const login = useLogin()
-  const auth = useAuthMethods()
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''

@@ -12,40 +12,41 @@ interface Credentials {
 interface RegisterCredentials extends Credentials {
   email: string
 }
+type AuthResponse = { token: string | null }
 
 class AuthService extends TokenService {
   constructor(public tokenName: string = 'auth-token') {
     super(tokenName)
   }
   async login(credentials: Credentials) {
-    return axiosApi.post('/auth/login', credentials).then(({ data }) => {
-      this.setToken(data?.token)
-      return data
+    return axiosApi.post<AuthResponse>('/auth/login', credentials).then(res => {
+      if (res.data) this.setToken(res.data.token)
+      return res
     })
   }
   logout() {
     this.setToken(null)
   }
   async register(credentials: RegisterCredentials) {
-    return axiosApi.post('/auth/register', credentials).then(({ data }) => {
-      this.setToken(data?.token)
-      return data
+    return axiosApi.post<AuthResponse>('/auth/register', credentials).then(res => {
+      if (res.data) this.setToken(res.data.token)
+      return res
     })
   }
 }
 
 interface AuthContextI {
   token: string | null
-  login: (data: Credentials) => Promise<ApiResponse<string | null>>
-  register: (data: RegisterCredentials) => Promise<ApiResponse<string | null>>
+  login: (data: Credentials) => Promise<ApiResponse<AuthResponse>>
+  register: (data: RegisterCredentials) => Promise<ApiResponse<AuthResponse>>
   logout: () => void
   authMethods: AuthService
 }
 export const AuthMethods = new AuthService()
 export const AuthContext = createContext<AuthContextI>({
   token: null, // initial token
-  login: async (data) => ({ data: '' }) as ApiResponse<string | null>, // login placeholder
-  register: async (data) => ({ data: '' }) as ApiResponse<string | null>, // register placeholder
+  login: async (data) => ({}), // login placeholder
+  register: async (data) => ({}), // register placeholder
   logout: () => { }, // logout placeholder
   authMethods: AuthMethods // TokenService
 })
@@ -59,15 +60,14 @@ export const useAuthMethods = () => useContext(AuthContext).authMethods
 const AuthProvider = ({ children }: PropsWithChildren) => {
   const [token, setToken] = useState(AuthMethods.getToken())
   const login = async (data: Credentials) => {
-    let token = await AuthMethods.login(data)
-    if (token) setToken(token)
-    return token
+    let res = await AuthMethods.login(data)
+    if (res.data) setToken(res.data.token)
+    return res
   }
   const register = async (data: RegisterCredentials) => {
-    let token = await AuthMethods.register(data)
-    console.log(token)
-    if (token && !token.errors) setToken(token)
-    return token
+    let res = await AuthMethods.register(data)
+    if (res.data) setToken(res.data.token)
+    return res
   }
 
   const logout = () => {

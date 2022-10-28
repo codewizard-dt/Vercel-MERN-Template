@@ -8,10 +8,10 @@ interface ModelProps {
   password: string
 }
 interface InstanceMethods extends Schema<ModelProps> {
-
+  isCorrectPassword(password: string): Promise<boolean>
 }
 export interface Model extends MongooseModel<ModelProps, {}, InstanceMethods> {
-
+  findAndValidate(username: string, password: string): Promise<ModelProps | null>
 }
 
 const UserSchema = new Schema<ModelProps, Model, InstanceMethods>({
@@ -45,9 +45,15 @@ UserSchema.pre('save', async function (next) {
 });
 
 // compare the incoming password with the hashed password
-UserSchema.methods.isCorrectPassword = async function (password: string) {
-  return bcrypt.compare(password, this.password);
+UserSchema.methods.isCorrectPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
+UserSchema.statics.findAndValidate = async function (username, password) {
+  let user = await this.findOne({ username })
+  if (!user) return null
+  let isValid = await user.isCorrectPassword(password)
+  return isValid ? user : null
+}
 
 const User = models.User as Model || model<ModelProps, Model>('User', UserSchema)
 

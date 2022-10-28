@@ -7,7 +7,7 @@ const register: RequestHandler<{ username: string, email: string, password: stri
   await ConnectDB()
   let { _id, username } = await User.create(req.body)
   let token = signAuthToken({ _id, username })
-  res.json({ token })
+  res.json({ data: { token } })
 }
 
 export default register

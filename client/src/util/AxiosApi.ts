@@ -1,24 +1,21 @@
-import { Axios as AxiosBase } from "axios";
+import { ApiResponse } from "@codewizard-dt/use-form-hook";
+import { Axios, AxiosRequestTransformer, AxiosResponseTransformer } from "axios";
 import { tokenName } from "../config/auth";
+import { addAuthHeader, parseJson, responseHandler } from "./AxiosMethods";
 
-const axiosApi = new AxiosBase({
-  baseURL: '/api',
-  transformRequest: (data, headers) => {
-    let token = localStorage.getItem(tokenName)
-    if (token) headers.set('Authorization', token)
-    if (typeof data !== 'string') {
-      headers.set('Content-Type', 'application/json')
-      data = JSON.stringify(data)
-    }
-    return data
-  },
-  transformResponse: (data, headers) => {
-    try {
-      return JSON.parse(data)
-    } catch (error) {
-      return data
-    }
+type AxiosPost = typeof Axios.prototype.post
+
+class AxiosApi {
+  axios = new Axios({
+    baseURL: '/api',
+    transformRequest: addAuthHeader,
+    transformResponse: parseJson
+  })
+  async post<T>(...args: Parameters<AxiosPost>) {
+    return this.axios.post<ApiResponse<T>>(...args).then(responseHandler<T>)
   }
-})
+}
+
+const axiosApi = new AxiosApi()
 
 export default axiosApi

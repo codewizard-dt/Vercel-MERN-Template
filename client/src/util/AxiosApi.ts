@@ -1,6 +1,5 @@
 import { ApiResponse } from "@codewizard-dt/use-form-hook";
-import { Axios, AxiosRequestTransformer, AxiosResponseTransformer } from "axios";
-import { tokenName } from "../config/auth";
+import { Axios } from "axios";
 import { addAuthHeader, parseJson, responseHandler } from "./AxiosMethods";
 
 type AxiosPost = typeof Axios.prototype.post

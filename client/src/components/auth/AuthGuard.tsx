@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useAuth } from './context';
+import { useAuth } from '../../util/AuthContext';
 
 export interface AuthGuardProps extends PropsWithChildren {
   type: 'user' | 'guest'

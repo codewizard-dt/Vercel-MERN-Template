@@ -30,8 +30,5 @@
   },
   "devDependencies": {
     "concurrently": "^7.5.0"
-  },
-  "dependencies": {
-    "commander": "^9.4.1"
   }
 }

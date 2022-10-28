@@ -1,2 +1,26 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Lora:ital@1&family=Montserrat:ital,wght@0,700;0,900;1,700&display=swap')
+
 .app 
   text-align: center
+
+html
+  font-size: 24px
+
+body
+  font-family: 'Hind Madurai', sans-serif
+  font-size: unset
+
+.ui.header
+  font-family: 'Montserrat', sans-serif
+  +
+    .ui.header
+      font-family: 'Lora', sans-serif
+      margin-top: 0
+  &.italic
+    font-family: 'Lora', sans-serif
+    +
+      .ui.header
+        font-family: 'Hind Madurai', sans-serif
+
+    

@@ -5,7 +5,7 @@ const axiosApi = new AxiosBase({
   baseURL: '/api',
   transformRequest: (data, headers) => {
     let token = localStorage.getItem(tokenName)
-    if (token) headers.set('Authorization', `Bearer ${token}`)
+    if (token) headers.set('Authorization', token)
     if (typeof data !== 'string') {
       headers.set('Content-Type', 'application/json')
       data = JSON.stringify(data)

@@ -32,6 +32,11 @@ const UserSchema = new Schema<ModelProps, Model, InstanceMethods>({
     required: true,
     minlength: [5, 'Password is too short'],
   },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  }
 }, {
   // schema options
 })

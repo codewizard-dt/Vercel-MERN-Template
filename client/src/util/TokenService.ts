@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 
-export class TokenService {
+export class TokenService<T> {
   constructor(public tokenName: string) { }
   get isValid(): boolean {
     let token = this.getToken()
@@ -17,5 +17,16 @@ export class TokenService {
     if (token) localStorage.setItem(this.tokenName, token)
     else localStorage.removeItem(this.tokenName)
     return token
+  }
+  getPayload(): T | null {
+    try {
+      let token = this.getToken()
+      if (!token) return null
+      const { data } = jwtDecode<{ data: T }>(token)
+      return data
+    } catch (error) {
+      console.log(error)
+      return null
+    }
   }
 }

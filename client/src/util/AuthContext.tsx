@@ -4,6 +4,12 @@ import { createContext } from "react";
 import axiosApi from './AxiosApi';
 import { TokenService } from './TokenService';
 
+export type AuthRole = 'user' | 'admin'
+interface AuthToken {
+  _id: string
+  username: string
+  role: AuthRole
+}
 
 interface Credentials {
   username: string
@@ -14,7 +20,7 @@ interface RegisterCredentials extends Credentials {
 }
 type AuthResponse = { token: string | null }
 
-class AuthService extends TokenService {
+class AuthService extends TokenService<AuthToken>{
   constructor(public tokenName: string = 'auth-token') {
     super(tokenName)
   }
@@ -32,6 +38,11 @@ class AuthService extends TokenService {
       if (res.data) this.setToken(res.data.token)
       return res
     })
+  }
+  getRole(): AuthRole | null {
+    let data = this.getPayload()
+    if (!data) return null
+    return data.role
   }
 }
 

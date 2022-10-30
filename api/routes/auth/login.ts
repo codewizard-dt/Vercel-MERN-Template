@@ -9,7 +9,8 @@ const login: RequestHandler<{ username: string, password: string }> = async (req
   let isValid = await User.findAndValidate(username, password)
   let token: string | null = null
   if (isValid) {
-    token = signAuthToken({ username, _id: isValid._id })
+    let { _id, role } = isValid
+    token = signAuthToken({ _id, username, role })
     res.json({ data: { token } })
   } else {
     res.status(401).json({ error: 'Invalid credentials' })

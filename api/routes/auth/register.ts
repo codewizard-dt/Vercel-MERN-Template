@@ -5,8 +5,8 @@ import { signAuthToken } from "../../util/auth";
 
 const register: RequestHandler<{ username: string, email: string, password: string }> = async (req, res) => {
   await ConnectDB()
-  let { _id, username } = await User.create(req.body)
-  let token = signAuthToken({ _id, username })
+  let { _id, username, role } = await User.create(req.body)
+  let token = signAuthToken({ _id, username, role })
   res.json({ data: { token } })
 }
 

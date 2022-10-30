@@ -9,6 +9,11 @@ import NotFound from './components/util/NotFound';
 import Login from './components/auth/LoginForm';
 import NavMessage from './components/util/NavMessage';
 import RegisterForm from './components/auth/RegisterForm';
+import RoleGuard from './components/roles/RoleGuard';
+
+// TODO: Roles / Authorization
+// TODO: StoryBlok
+// TODO: Collections
 
 function App() {
   return (
@@ -23,6 +28,9 @@ function App() {
           <Route path='/' element={<AuthGuard type="guest" />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<RegisterForm />} />
+          </Route>
+          <Route path="/admin" element={<RoleGuard type="admin" />}>
+            <Route path="dashboard" element={<div>ADMIN</div>} />
           </Route>
           <Route path="*" element={<NotFound />} />
 

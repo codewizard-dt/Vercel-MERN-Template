@@ -15,6 +15,7 @@ const Home = () => {
       <Label.Group>
         <Label>JSON Web Token</Label>
         <Label>Authentication</Label>
+        <Label>MongoDB Integration</Label>
       </Label.Group>
       {authToken ? <>
         <Link to="/dashboard">

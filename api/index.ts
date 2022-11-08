@@ -1,14 +1,14 @@
 import express, { Router } from 'express'
 import path from 'path'
 require('dotenv').config()
-import authRouter from "./routes/auth";
-import usersRouter from './routes/users';
+import authRouter from "../server/routes/auth";
+import usersRouter from '../server/routes/users';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import { cookieOptions } from './middleware/session';
-import { useDb } from './middleware/useDb';
-import { verifyAuth } from './middleware/auth';
-import catchErrors from './routes/errors';
+import { cookieOptions } from '../server/middleware/session';
+import { useDb } from '../server/middleware/useDb';
+import { verifyAuth } from '../server/middleware/auth';
+import catchErrors from '../server/routes/errors';
 
 const isProduction = process.env.NODE_ENV === 'production'
 const PORT = process.env.PORT || 3001

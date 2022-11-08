@@ -2,19 +2,19 @@ import { Request } from "express";
 import { CookieOptions } from "express-session"
 import { UserProps } from '../models/User';
 
-const envOptions: CookieOptions = process.env.NODE_ENV === 'production' ? {
-  secure: true
-} : {
-  domain: 'localhost'
-}
+// const envOptions: CookieOptions = process.env.NODE_ENV === 'production' ? {
+//   domain: process.env.VERCEL_URL
+// } : {
+//   domain: 'localhost'
+// }
 
 export const cookieOptions: CookieOptions = {
   maxAge: 7 * 24 * 60 * 60 * 1000,
-  signed: true,
+  // signed: true,
   httpOnly: true,
   sameSite: 'strict',
   path: '/',
-  ...envOptions
+  // ...envOptions
 }
 
 export const addUserToSession = (req: Request, user: UserProps) => {

@@ -6,7 +6,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Authorization, Origin, Content-Type, Accept"
+          "value": "Authorization, Origin, Content-Type, Accept, Set-Cookie"
         }
       ]
     }

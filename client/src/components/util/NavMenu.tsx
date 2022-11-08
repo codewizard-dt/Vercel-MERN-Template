@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Menu, MenuItem, MenuProps } from 'semantic-ui-react'
 import NavItem, { NavItemProps } from './NavItem'
 import './NavMenu.sass'
@@ -18,13 +19,13 @@ const NavMenu = ({ items = [], options = {} }: NavMenuProps) => {
             if (stretch === 'self') arr.push('stretch')
             return arr.join(' ')
           }
-          return <>
+          return <Fragment key={i}>
             {stretch === 'before' && <MenuItem className='stretch' />}
             {to
-              ? <NavItem key={i} to={to} {...itemProps} />
-              : <MenuItem key={i} className={classes()} {...itemProps} />}
+              ? <NavItem to={to} {...itemProps} />
+              : <MenuItem className={classes()} {...itemProps} />}
             {stretch === 'after' && <MenuItem className='stretch' />}
-          </>
+          </Fragment>
         }
       )} {...options} />
     </nav>

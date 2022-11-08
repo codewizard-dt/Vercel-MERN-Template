@@ -1,6 +1,5 @@
 import { Request } from "express";
 import { CookieOptions } from "express-session"
-import { signToken } from '../util/token';
 import { UserProps } from '../models/User';
 
 const envOptions: CookieOptions = process.env.NODE_ENV === 'production' ? {
@@ -12,6 +11,9 @@ const envOptions: CookieOptions = process.env.NODE_ENV === 'production' ? {
 export const cookieOptions: CookieOptions = {
   maxAge: 7 * 24 * 60 * 60 * 1000,
   signed: true,
+  httpOnly: true,
+  sameSite: 'strict',
+  path: '/',
   ...envOptions
 }
 

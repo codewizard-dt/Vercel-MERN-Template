@@ -22,6 +22,7 @@ if (!isProduction) {
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+console.log(cookieOptions)
 app.use(session({
   secret: process.env.APP_SECRET || 'development',
   cookie: cookieOptions,

@@ -1,12 +1,13 @@
 import { FormProvider, useForm } from "@codewizard-dt/use-form-hook"
 import { Container } from "semantic-ui-react"
-import { useRegister } from "../../util/AuthContext"
+import { useAuthMethods } from "../../util/AuthContext"
+// import { useRegister } from "../../util/AuthContext"
 
 const RegisterForm = () => {
-  const register = useRegister()
+  const auth = useAuthMethods()
   const Form = useForm()
   const submit = async (credentials: any) => {
-    return register(credentials)
+    return auth.register(credentials)
   }
   return (
     <Container>

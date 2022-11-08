@@ -12,5 +12,4 @@ export function decodeToken<T>(token: string): T | null {
     if (!decoded) return null
     return typeof decoded === 'string' ? JSON.parse(decoded) : decoded.data
   } else return null
-
 }

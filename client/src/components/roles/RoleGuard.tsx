@@ -10,13 +10,12 @@ export interface RoleGuardProps {
 }
 
 const RoleGuard = ({ type, redirect = "/" }: RoleGuardProps) => {
-  const token = useAuth()
+  const user = useAuth()
   const auth = useAuthMethods()
-  const [role, setRole] = useState<'user' | 'admin' | null>(null)
   useEffect(() => {
-    setRole(auth.getRole())
-  }, [token, auth])
-  return role === type ? <Outlet /> : (
+    auth.touch()
+  }, [auth])
+  return user?.role === type ? <Outlet /> : (
     <Segment basic textAlign='center' >
       <Message negative>Restricted {type} area</Message>
       <BackButton />

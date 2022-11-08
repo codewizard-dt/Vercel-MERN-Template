@@ -1,4 +1,6 @@
+import Mongoose from "mongoose"
+
 declare global {
-  var mongoose: any
+  var mongoose: Promise<typeof Mongoose>
 }
 export { }

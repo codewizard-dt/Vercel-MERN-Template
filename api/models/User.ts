@@ -1,20 +1,21 @@
 import { Schema, model, models, Model as MongooseModel } from 'mongoose'
 import bcrypt from 'bcrypt'
 
-interface ModelProps {
+export interface UserProps {
   [key: string]: any
   _id: string
   email: string
   password: string
+  role: 'user' | 'admin'
 }
-interface InstanceMethods extends Schema<ModelProps> {
+interface InstanceMethods extends Schema<UserProps> {
   isCorrectPassword(password: string): Promise<boolean>
 }
-export interface Model extends MongooseModel<ModelProps, {}, InstanceMethods> {
-  findAndValidate(username: string, password: string): Promise<ModelProps | null>
+export interface Model extends MongooseModel<UserProps, {}, InstanceMethods> {
+  findAndValidate(username: string, password: string): Promise<UserProps | null>
 }
 
-const UserSchema = new Schema<ModelProps, Model, InstanceMethods>({
+const UserSchema = new Schema<UserProps, Model, InstanceMethods>({
   username: {
     type: String,
     required: true,
@@ -36,9 +37,21 @@ const UserSchema = new Schema<ModelProps, Model, InstanceMethods>({
     type: String,
     enum: ['user', 'admin'],
     default: 'user'
+  },
+  __v: {
+    type: Number,
+    select: false
   }
 }, {
   // schema options
+
+  toObject: {
+    transform: function (doc, rep, options) {
+      delete rep.password
+      rep._id = rep._id.toString()
+      return rep
+    }
+  }
 })
 
 UserSchema.pre('save', async function (next) {
@@ -60,6 +73,6 @@ UserSchema.statics.findAndValidate = async function (username, password) {
   return isValid ? user : null
 }
 
-const User = models.User as Model || model<ModelProps, Model>('User', UserSchema)
+const User = models.User as Model || model<UserProps, Model>('User', UserSchema)
 
 export default User

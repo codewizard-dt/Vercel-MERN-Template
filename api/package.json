@@ -14,10 +14,13 @@
   "author": "David Taylor",
   "license": "MIT",
   "dependencies": {
+    "@types/express-session": "^1.17.5",
     "@vercel/node": "^2.5.26",
     "bcrypt": "^5.1.0",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.0"
   },

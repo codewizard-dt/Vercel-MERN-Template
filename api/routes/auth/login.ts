@@ -1,17 +1,20 @@
 import { RequestHandler } from "express";
-import ConnectDB from "../../db/ConnectDB";
+import dbConnect from "../../db/dbConnect";
+// import ConnectDB from "../../db/dbConnection";
 import User from "../../models/User";
 import { signAuthToken } from "../../util/auth";
 
 const login: RequestHandler<{ username: string, password: string }> = async (req, res) => {
-  await ConnectDB()
+  // dbConnect()
   let { username, password } = req.body
   let isValid = await User.findAndValidate(username, password)
+  console.log({ username, password, isValid })
   let token: string | null = null
   if (isValid) {
     let { _id, role } = isValid
+    req.session.user = { _id, username, role }
     token = signAuthToken({ _id, username, role })
-    res.json({ data: { token } })
+    res.json({ token })
   } else {
     res.status(401).json({ error: 'Invalid credentials' })
   }

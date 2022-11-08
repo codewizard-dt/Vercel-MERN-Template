@@ -1,9 +1,10 @@
 import { Button } from 'semantic-ui-react';
-import { useLogout } from '../../util/AuthContext';
+import { useAuthMethods } from '../../util/AuthContext';
+// import { useLogout } from '../../util/AuthContext';
 const LogoutButton = () => {
-  const logout = useLogout()
+  const auth = useAuthMethods()
   return (
-    <Button onClick={logout}>
+    <Button onClick={() => auth.logout()}>
       Logout
     </Button>
   )

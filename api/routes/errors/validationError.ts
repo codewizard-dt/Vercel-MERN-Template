@@ -1,9 +1,8 @@
-import { ErrorRequestHandler, RequestHandler } from "express"
+import { ErrorRequestHandler } from "express"
 import { JsonWebTokenError } from "jsonwebtoken";
 import { DuplicateKeyError, ValidationError } from "../../db/Errors";
 
 export const catchValidationError: ErrorRequestHandler = (error, req, res, next) => {
-  console.log("CAUGHTY BY VALIDATOR")
   try {
     if (error instanceof JsonWebTokenError) {
       res.status(401).json({ error: { token: 'Unauthorized' } })
@@ -28,20 +27,10 @@ export const catchValidationError: ErrorRequestHandler = (error, req, res, next)
           }
           return
         default:
-          console.error(`Unhandled '${error.name}' error`, error.message)
-          res.status(500).json({ error });
+          next(error)
       }
-    } else {
-      // console.log(error.name);
-      console.log('Unhandled error')
-      console.dir({ error })
-      res.status(500).json({ error: error });
     }
-
   } catch (caughtError) {
-    console.error('Error');
-    console.log({ error, caughtError })
+    next(caughtError)
   }
-
-
 }

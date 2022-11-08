@@ -6,5 +6,5 @@ export interface AuthTokenContents {
   role: 'user' | 'admin'
 }
 
-export const signAuthToken = signToken<AuthTokenContents>
+export const signAuthToken = (user: AuthTokenContents) => signToken<AuthTokenContents>(user)
 export const decodeAuthToken = decodeToken<AuthTokenContents>

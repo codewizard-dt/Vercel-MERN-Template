@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react'
+import { PropsWithChildren } from 'react'
 import { Button } from 'semantic-ui-react'
 import { H1 } from '../style/headers'
 import { useAuth } from '../../util/AuthContext';
@@ -12,7 +12,7 @@ export interface UserDetailsProps extends PropsWithChildren {
   // user: User
 }
 
-const UserDetails = ({ }: UserDetailsProps) => {
+const UserDetails = (props: UserDetailsProps) => {
   const auth = useAuth()
   const { userId } = useParams()
   const { data, refetch } = useQuery(['user', userId], () => getUser(userId || ''))

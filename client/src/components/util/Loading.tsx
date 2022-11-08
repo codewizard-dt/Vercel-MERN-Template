@@ -1,4 +1,3 @@
-import { PropsWithChildren } from "react"
 import { Loader, LoaderProps, Message } from "semantic-ui-react"
 import './Loading.sass'
 

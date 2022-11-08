@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Message, Segment } from 'semantic-ui-react';
 import { useAuth, useAuthMethods } from '../../util/AuthContext'

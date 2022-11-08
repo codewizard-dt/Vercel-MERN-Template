@@ -1,9 +1,8 @@
-import { Menu, MenuItem, MenuItemProps, MenuProps } from 'semantic-ui-react'
+import { Menu, MenuItem, MenuProps } from 'semantic-ui-react'
 import NavItem, { NavItemProps } from './NavItem'
 import './NavMenu.sass'
 
 export interface NavMenuProps {
-  // menuName?: string
   items: Partial<NavItemProps>[]
   options?: MenuProps
 }

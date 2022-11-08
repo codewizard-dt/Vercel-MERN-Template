@@ -1,5 +1,5 @@
-import { PropsWithChildren, useEffect, useState } from 'react'
-import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { MenuItem, MenuItemProps } from 'semantic-ui-react'
 
 export interface NavItemProps extends MenuItemProps {
@@ -12,7 +12,7 @@ const NavItem = ({ to, stretch, ...menuItemProps }: NavItemProps) => {
   const [active, setActive] = useState<boolean>(false)
   useEffect(() => {
     setActive(pathname === to)
-  }, [pathname])
+  }, [pathname, to])
   const getClassNames = () => {
     let classNames = []
     if (active) classNames.push('active')

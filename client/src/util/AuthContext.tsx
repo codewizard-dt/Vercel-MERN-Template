@@ -82,7 +82,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       token.unsubscribe()
       user.unsubscribe()
     }
-  }, [AuthMethods])
+  }, [])
 
   return <AuthContext.Provider value={{ token, user, authMethods: AuthMethods }}>
     {children}

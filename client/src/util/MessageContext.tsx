@@ -4,9 +4,9 @@ import { MessageProps } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import ApiService from './ApiService'
 
-interface AppMessageProps extends MessageProps {
-  onClick?: (ev: { stopPropagation: () => void }) => void
-}
+// interface AppMessageProps extends MessageProps {
+//   onClick?: (ev: { stopPropagation: () => void }) => void
+// }
 interface Message extends MessageProps {
   id: string
 }

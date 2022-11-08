@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import './App.sass';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -14,7 +14,6 @@ import NavBar from './components/util/NavMenu';
 import { FormProvider } from '@codewizard-dt/use-form-hook';
 import UserDetails from './components/users/UserDetails';
 import Messages from './components/util/Messages';
-import { Menu } from 'semantic-ui-react';
 
 // TODO: Roles / Authorization
 // TODO: StoryBlok

@@ -25,8 +25,8 @@ function App() {
     <BrowserRouter basename='/'>
       <div className="app">
         <NavBar items={[
-          // { to: '/', stretch: 'after', content: 'Home', icon: 'home' },
-          { stretch: 'self' },
+          { to: '/', stretch: 'after', content: 'Home', icon: 'home' },
+          // { stretch: 'self' },
           { to: '/about', content: 'About' },
           { to: '/dashboard', content: 'Dashboard' }
         ]} />

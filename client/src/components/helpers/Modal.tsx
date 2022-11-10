@@ -31,7 +31,7 @@ const Modal = ({ onClose, onOpen, scrolling = true, className, children, ...moda
 
   useEffect(() => {
     if (open && onOpen) onOpen()
-  }, [open])
+  }, [open, onOpen])
 
   return (
     <ModalUI id={modalId} onClose={handleClose}

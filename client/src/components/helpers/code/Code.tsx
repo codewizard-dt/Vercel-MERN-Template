@@ -26,7 +26,7 @@ const Code = ({ stringLiteral, modalTrigger, json, name, filePath, language = 't
   }
   useEffect(() => {
     if (eleRef.current) highlight()
-  }, [eleRef.current])
+  }, [eleRef])
 
   const getClassName = () => {
     let arr = []

@@ -1,9 +1,6 @@
-import React, { PropsWithChildren } from 'react'
-import { useQuery } from 'react-query'
+import { PropsWithChildren } from 'react'
 import { Segment } from 'semantic-ui-react'
 import { H1 } from '../components/basic-html/Headers'
-import ApiService from '../util/ApiService'
-import { useAuth } from '../util/AuthContext'
 
 export interface DashboardProps extends PropsWithChildren {
 

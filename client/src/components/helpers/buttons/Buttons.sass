@@ -1,0 +1,22 @@
+@use 'sass:color'
+@use '../../../theme/colors'
+
+@mixin button($bg, $text)  
+  @include colors.bgText($bg,$text)
+  &:hover
+    background-color: color.adjust($bg, $lightness: -3%) !important
+
+
+a.floated
+  display: block
+  z-index: 1
+
+.ui.buttons
+  &.right.aligned
+    display: flex
+    justify-content: flex-end
+
+.ui.button
+  transition: all 400ms
+  &.blue
+    @include button(colors.$dark-blue,colors.$light-blue)

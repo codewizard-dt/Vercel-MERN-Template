@@ -1,0 +1,12 @@
+@use '../../theme/colors'
+
+.ui.header
+  font-family: 'Montserrat', sans-serif
+  color: colors.$blue-text
+  &.pink
+    colors: colors.$pink-text
+  +
+    .ui.header
+      margin-top: 0
+  &.italic
+    font-family: 'Lora', sans-serif

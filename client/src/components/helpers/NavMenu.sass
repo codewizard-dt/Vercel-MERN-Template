@@ -1,0 +1,17 @@
+@use 'sass:color'
+@use '../../theme/colors'
+
+.nav-menu
+  + * 
+    margin-top: 1rem
+  .ui.menu
+    background-color: colors.$light-pink
+    border-color: colors.$pink
+    .item
+      color: colors.$pink-text
+      &.active
+        color: colors.$pink-text
+        &:hover
+    .stretch
+      flex-grow: 1
+

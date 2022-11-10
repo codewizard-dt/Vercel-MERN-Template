@@ -17,7 +17,7 @@ export class TokenService<T> {
   getToken() {
     return localStorage.getItem(this.tokenName)
   }
-  setToken(token: string | null) {
+  protected setToken(token: string | null) {
     if (token) {
       localStorage.setItem(this.tokenName, token)
     } else {

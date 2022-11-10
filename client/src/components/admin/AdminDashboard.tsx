@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
-import { getUsers } from "../../fetch/getUsers"
+import { getUsers } from "../../react-query/getUsers"
 import UserList from "../users/UserList"
-import Loading from "../util/Loading"
+import Loading from "../helpers/Loading"
 
 const AdminDashboard = () => {
   const { data, isLoading } = useQuery(['users',], getUsers)

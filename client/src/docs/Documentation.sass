@@ -1,0 +1,46 @@
+@use '../theme/colors'
+
+.type-annotation
+  color: colors.$dark-pink
+.extends
+  display: inline-block
+  margin: 0 0.25em
+  font-size: 0.9em
+  color: gray
+  
+.method-doc, .property-doc, .constructor-doc
+  position: relative
+  .name
+    font-weight: 700
+  .description
+    margin-bottom: 0
+  .params
+    color: colors.$pink
+    > span
+      display: inline-block
+      color: colors.$dark-pink
+      font-weight: normal
+      font-style: italic
+      margin-right: 2px
+      &:not(:last-child):after
+        content: ', '
+  .type
+    font-style: italic
+    font-size: 0.8rem
+    opacity: 0.6
+  .returns
+    font-weight: normal
+    color: colors.$dark-blue
+  > .button
+    opacity: 0.7
+    position: absolute
+    top: 0.5rem
+    right: 0.5rem
+    &:hover
+      opacity: 1
+
+.list
+  .method-doc, .property-doc
+    &:last-child
+      border-bottom-width: 0
+

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Message, Segment } from 'semantic-ui-react';
 import { useAuth, useAuthMethods } from '../../util/AuthContext'
-import BackButton from '../util/buttons/BackButton';
+import BackButton from '../helpers/buttons/BackButton';
 
 export interface RoleGuardProps {
   type: 'user' | 'admin'

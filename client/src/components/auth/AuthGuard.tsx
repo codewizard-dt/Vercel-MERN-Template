@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 import { Navigate, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Button, Message, Segment } from 'semantic-ui-react';
 import { useAuth } from '../../util/AuthContext';
-import BackButton from '../util/buttons/BackButton';
+import BackButton from '../helpers/buttons/BackButton';
 
 export interface AuthGuardProps extends PropsWithChildren {
   type: 'user' | 'guest'

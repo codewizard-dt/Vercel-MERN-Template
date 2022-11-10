@@ -1,0 +1,25 @@
+@use 'sass:color'
+@use '../../theme/animations'
+@use '../../theme/colors'
+
+.ui.dimmer
+  &.active
+    animation: fadeIn 200ms forwards
+  &.fade-out
+    animation: fadeOut 200ms forwards
+.ui.modal
+  width: max-content
+  max-width: 90vw
+  &.active
+    animation: fadeIn 400ms forwards, 200ms flexGrow 200ms
+  &.fade-out
+    animation: fadeOut 200ms forwards, shrinkAway 200ms
+  .scrolling.content
+    max-height: calc(90vh - 10em)
+  > .content
+    background-color: colors.$light-blue
+  > .actions
+    background-color: color.adjust(colors.$dark-blue, $alpha: -0.6)
+    .button
+      background-color: colors.$dark-blue
+      color: colors.$light-blue 

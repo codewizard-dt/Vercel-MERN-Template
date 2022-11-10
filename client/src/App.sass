@@ -1,3 +1,7 @@
+@use './theme/colors'
+@use './components/helpers/buttons/Buttons'
+@use './components/basic-html/Headers'
+
 // FONTS
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Lora:ital@1&family=Montserrat:ital,wght@0,700;0,900;1,700&display=swap')
 
@@ -10,17 +14,23 @@ html
 body
   font-family: 'Hind Madurai', sans-serif
   font-size: unset
+  background-color: colors.$light-blue
 
-.ui.header
-  font-family: 'Montserrat', sans-serif
-  +
-    .ui.header
-      font-family: 'Lora', sans-serif
-      margin-top: 0
-  &.italic
-    font-family: 'Lora', sans-serif
-    +
-      .ui.header
-        font-family: 'Hind Madurai', sans-serif
-
+.ui.label
+  &.pink
+    @include colors.bgText(colors.$light-pink, colors.$pink-text)
     
+div.description
+  margin-bottom: 1rem
+.description
+  .detail
+    font-style: italic
+  &:last-child
+    margin-bottom: 0
+
+.opacity-500
+  opacity: 0.5
+.opacity-750
+  opacity: 0.75
+.opacity-800
+  opacity: 0.8

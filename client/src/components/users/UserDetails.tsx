@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react'
 import { Button } from 'semantic-ui-react'
-import { H1 } from '../style/headers'
+import { H1 } from '../basic-html/Headers'
 import { useAuth } from '../../util/AuthContext';
-import Loading from '../util/Loading';
+import Loading from '../helpers/Loading';
 import { useMutation, useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { getUser } from '../../fetch/getUser';
+import { getUser } from '../../react-query/getUser';
 import ApiService from '../../util/ApiService';
 
 export interface UserDetailsProps extends PropsWithChildren {

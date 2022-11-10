@@ -1,0 +1,44 @@
+@use '../../theme/animations'
+
+#Messages
+  position: fixed
+  top: 1em
+  right: 1em
+  // Only children of #Messages
+  .ui.message
+    transform-origin: top
+    animation: slideIn 800ms forwards
+    margin: 0.5em 0
+    &.fade-out
+      animation: slideOut 800ms forwards
+      min-height: 0
+    > .close.icon
+      top: 0.3em
+      right: 0.3em
+
+
+// Global .ui.message
+.ui.message 
+  &.fit-content
+    width: max-content
+    margin: auto
+    &.left-aligned
+      margin-left: 1em
+    &.right-aligned
+      margin-right: 1em
+
+
+// @keyframes fadeOut
+//   100%
+//     opacity: 0
+//     height: 0
+//     transform: scaleY(0)
+//     margin: -1em 0
+  
+// @keyframes fadeIn
+//   0%
+//     opacity: 0
+//     transform: scaleY(0)
+//   100%
+//     opacity: 1
+//     transform: scaleY(1)

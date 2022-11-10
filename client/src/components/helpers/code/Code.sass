@@ -1,0 +1,51 @@
+@use '../../../theme/colors'
+
+.code-block
+  font-size: 0.9em
+  text-align: left
+  background: rgb(90,90,90)
+  border-radius: 5px
+  padding: max(10px, 1rem)
+  color: white
+  user-select: contain
+
+  &.inline
+    display: inline-block
+    background: rgb(150,150,150)
+    padding: 2px 0.4rem
+    margin: -5px 2px
+    font-style: normal
+.file-path
+  font-size: 0.8em !important
+
+/* The following is a custom theme for the highlight.js */
+pre code.hljs
+  text-align: left
+  background: rgb(90,90,90)
+  border-radius: 5px
+  padding: 0
+  color: white
+  user-select: contain
+.hljs
+  &-attr
+    color: turquoise
+  &-string
+    color: khaki
+  &-comment
+    color: gray
+  &-keyword
+    color: skyblue
+  &-literal
+    color: deepskyblue
+  &-function
+    color: coral
+  &-params
+    color: orangered
+  &-built_in
+    color: bisque
+  &-title
+    &.class_, &.class_.inherited__, &.function_
+      color: dodgerblue
+  &-variable
+    &.language_
+      color: violet

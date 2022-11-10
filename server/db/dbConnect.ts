@@ -1,8 +1,6 @@
 import mongoose, { ConnectOptions } from 'mongoose'
 
-let URL = process.env.MONGODB_URI
-
-if (!URL) console.log('define MONGODB_URI env variable to connect')
+if (!process.env.MONGODB_URI) console.log('define MONGODB_URI env variable to connect')
 
 async function dbConnect(): Promise<typeof mongoose> {
   if (!global.mongoose) {

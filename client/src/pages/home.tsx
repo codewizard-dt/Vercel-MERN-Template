@@ -2,8 +2,8 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../util/AuthContext"
 import LogoutButton from "../components/auth/LogoutButton"
 import { Button, Container, Label } from "semantic-ui-react"
-import { H1, H2 } from "../components/style/headers"
-import ExternalLink from "../components/util/ExternalLink"
+import { H1, H2 } from "../components/basic-html/Headers"
+import ExternalLink from "../components/helpers/ExternalLink"
 
 const Home = () => {
   const authToken = useAuth()

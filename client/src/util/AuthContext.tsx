@@ -1,6 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { PropsWithChildren, useContext, useEffect, useState } from 'react'
-import { createContext } from "react";
+import { PropsWithChildren, createContext, useContext, useEffect, useState } from 'react'
 import ApiService from './ApiService';
 import { TokenService } from './TokenService';
 
@@ -34,7 +33,7 @@ class AuthService extends TokenService<AuthToken>{
     return response
   }
 
-  async touch() {
+  touch() {
     ApiService.get('/auth/touch')
   }
   async login(credentials: Credentials) {

@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react'
-import { Button, HeaderSubheader, Label, Segment } from 'semantic-ui-react'
-import { H4 } from '../components/basic-html/Headers'
-import Code from '../components/helpers/code/Code'
-import { getFullName, parseTypeAnnotation } from './util/Parse';
+import { PropsWithChildren } from 'react';
+import { Button, HeaderSubheader, Label, Segment } from 'semantic-ui-react';
+import { H4 } from '../components/basic-html/Headers';
+import Code from '../components/helpers/code/Code';
+import { getFullName } from './util/Parse';
 
 export interface CodeDocProps extends PropsWithChildren {
   name: string

@@ -1,5 +1,5 @@
 import { Message, Segment } from "semantic-ui-react"
-import { H2, H3, H4 } from "../components/basic-html/Headers"
+import { H2, H3 } from "../components/basic-html/Headers"
 import C from "../components/helpers/code/InlineCode"
 import ExternalLink from "../components/helpers/ExternalLink"
 

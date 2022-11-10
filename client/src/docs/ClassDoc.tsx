@@ -1,7 +1,7 @@
 import { camelCase, upperFirst } from 'lodash';
 import { ReactNode } from 'react';
 import { List, Segment } from 'semantic-ui-react';
-import { H4, H5 } from '../components/basic-html/Headers';
+import { H4 } from '../components/basic-html/Headers';
 import Code from '../components/helpers/code/Code';
 import CodeDoc, { CodeDocProps } from './CodeDoc';
 import { parseTypeAnnotation, stripTypeAnnotation } from './util/Parse';

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Icon, Label, Message, Segment } from "semantic-ui-react"
+import { Icon, Message, Segment } from "semantic-ui-react"
 import { H1, H3 } from '../components/basic-html/Headers';
 import Code from "../components/helpers/code/Code";
 import InlineCode from "../components/helpers/code/InlineCode";

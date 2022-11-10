@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { Button, Modal as ModalUI, ModalProps } from 'semantic-ui-react'
 import './Modal.sass'
 import { v4 as uuid } from 'uuid';

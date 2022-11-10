@@ -2,7 +2,6 @@ import { Segment } from "semantic-ui-react"
 import { H2, H3 } from "../components/basic-html/Headers"
 import C from "../components/helpers/code/InlineCode"
 import ClassDoc from "./ClassDoc"
-import CodeDoc from "./CodeDoc"
 import ComponentDoc from "./ComponentDoc"
 import FunctionDoc from "./FunctionDoc"
 

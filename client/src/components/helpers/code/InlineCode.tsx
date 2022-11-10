@@ -1,5 +1,4 @@
-import hljs from 'highlight.js'
-import { PropsWithChildren, useEffect, useRef } from 'react'
+import { PropsWithChildren } from 'react'
 
 export interface CodeProps extends PropsWithChildren {
   json?: { [key: string]: any }

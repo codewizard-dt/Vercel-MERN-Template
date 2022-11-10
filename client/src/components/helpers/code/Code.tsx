@@ -1,11 +1,9 @@
 import hljs from 'highlight.js';
-import { PropsWithChildren, ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Button, Header, ModalHeader } from 'semantic-ui-react';
+import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
+import { Header } from 'semantic-ui-react';
 import { H3 } from '../../basic-html/Headers';
 import Modal from '../Modal';
 import "./Code.sass"
-import C from './InlineCode';
-import { parseTypeAnnotation } from '../../../docs/util/Parse';
 
 export interface CodeProps extends PropsWithChildren {
   json?: { [key: string]: any }

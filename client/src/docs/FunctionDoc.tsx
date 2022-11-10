@@ -1,4 +1,3 @@
-import { PropsWithChildren, ReactNode } from 'react'
 import CodeDoc, { CodeDocProps } from './CodeDoc';
 
 interface FunctionDocProps extends CodeDocProps {

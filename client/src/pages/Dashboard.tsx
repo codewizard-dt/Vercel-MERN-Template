@@ -10,8 +10,8 @@ export interface DashboardProps extends PropsWithChildren {
 }
 
 const Dashboard = ({ children }: DashboardProps) => {
-  const auth = useAuth()
-  const { data: user } = useQuery(['profile'], () => ApiService.get('/auth/profile'))
+  // const auth = useAuth()
+  // const { data: user } = useQuery(['profile'], () => ApiService.get('/auth/profile'))
   return (
     <Segment basic textAlign='left'>
       <H1 />

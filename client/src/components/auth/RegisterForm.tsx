@@ -12,11 +12,15 @@ const RegisterForm = () => {
   return (
     <Container>
       <Form submitBtnText='Register' onSubmit={submit} fields={[
-        { name: 'username' },
-        { name: 'email' },
-        { name: 'password', type: 'password' },
+        { name: 'username', required: true },
+        { name: 'email', required: true },
         {
-          name: 'confirm_password', type: 'password', validators: [(value) => {
+          name: 'password', type: 'password', required: true, validators: [value => {
+            return value.length >= 5
+          }, 'Too short']
+        },
+        {
+          name: 'confirm_password', type: 'password', required: true, validators: [(value) => {
             return value === getData('password')
           }, 'Does not match password']
         }

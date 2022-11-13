@@ -6,8 +6,9 @@ interface FunctionDocProps extends CodeDocProps {
 }
 
 const FunctionDoc = ({ children, ...codeDocProps }: FunctionDocProps) => {
+  if (!codeDocProps.params) codeDocProps.params = []
   return (
-    <CodeDoc {...codeDocProps}>
+    <CodeDoc className='method-doc' {...codeDocProps}>
       {children}
     </CodeDoc>
   )

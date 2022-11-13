@@ -13,12 +13,24 @@ export interface CodeDocProps extends PropsWithChildren {
   stringLiteral?: string
   labels?: string[]
   type: 'Method' | 'Middleware' | 'Class' | 'Component' | 'Hook'
+  className?: string
 }
 
-const CodeDoc = ({ name, params, returns, extendedName, type, filePath, stringLiteral, labels, children }: CodeDocProps) => {
+const CodeDoc = ({
+  name,
+  params,
+  returns,
+  extendedName,
+  type,
+  filePath,
+  stringLiteral,
+  labels,
+  className,
+  children
+}: CodeDocProps) => {
   let fullName = getFullName({ name, params, extendedName, returns })
   return (
-    <Segment>
+    <Segment className={className}>
       <H4>
         <Code name={fullName} filePath={filePath} modalTrigger={<Button floated='right' color="blue" size="mini" icon="code" content={`View ${type}`} />} language="typescript" stringLiteral={stringLiteral} />
         {fullName}

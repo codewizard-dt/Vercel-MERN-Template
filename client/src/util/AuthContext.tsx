@@ -17,7 +17,7 @@ export interface Credentials {
 export interface RegisterCredentials extends Credentials {
   email: string
 }
-type AuthResponse = { token: string | null }
+export type AuthResponse = { token: string | null }
 
 class AuthService extends TokenService<AuthToken>{
   constructor(public tokenName: string = 'auth-token') {

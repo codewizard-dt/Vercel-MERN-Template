@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import dbConnect from "../../db/dbConnect";
 import User from "../../models/User";
 import { signAuthToken } from "../../util/auth";
 

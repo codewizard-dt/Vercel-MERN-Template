@@ -1,24 +1,26 @@
-import { FormProvider, useForm } from "@codewizard-dt/use-form-hook"
+import { useForm, useFormContext } from "@codewizard-dt/use-form-hook"
 import { Container } from "semantic-ui-react"
-import { useAuthMethods } from "../../util/AuthContext"
-// import { useRegister } from "../../util/AuthContext"
+import { AuthResponse, useAuthMethods } from "../../util/AuthContext"
 
 const RegisterForm = () => {
   const auth = useAuthMethods()
-  const Form = useForm()
+  const Form = useForm<AuthResponse>()
+  const { getData } = useFormContext()
   const submit = async (credentials: any) => {
     return auth.register(credentials)
   }
   return (
     <Container>
-      <FormProvider>
-        <Form submitBtnText='Register' submit={submit} fields={[
-          { name: 'username' },
-          { name: 'email' },
-          { name: 'password', type: 'password' },
-          { name: 'confirm_password', type: 'password' }
-        ]} />
-      </FormProvider>
+      <Form submitBtnText='Register' onSubmit={submit} fields={[
+        { name: 'username' },
+        { name: 'email' },
+        { name: 'password', type: 'password' },
+        {
+          name: 'confirm_password', type: 'password', validators: [(value) => {
+            return value === getData('password')
+          }, 'Does not match password']
+        }
+      ]} />
     </Container>
   )
 

@@ -2,7 +2,7 @@ import { Segment } from "semantic-ui-react"
 import { H2, H3 } from "../components/basic-html/Headers"
 import C from "../components/helpers/code/InlineCode"
 import ExternalLink from "../components/helpers/ExternalLink"
-import CodeDoc from "./CodeDoc"
+import FunctionDoc from "./FunctionDoc"
 
 
 const Database = () => {
@@ -12,8 +12,9 @@ const Database = () => {
       {/** METHODS */}
       <H3 italic>Helper Methods</H3>
       <Segment.Group>
-        <CodeDoc name="dbConnect"
+        <FunctionDoc name="dbConnect"
           type='Method'
+          returns="Promise<mongoose>"
           filePath="server/db/dbConnect.ts"
           labels={['backend', 'async']}
           stringLiteral={literals.dbConnect}>
@@ -21,17 +22,17 @@ const Database = () => {
             Initializes and returns the globally defined Mongoose database connection
             <div className="detail">Once initialized, any further calls do not create additional database connections</div>
           </div>
-        </CodeDoc>
-        <CodeDoc type="Method" name="getMongo" filePath="server/db/getMongo.ts" labels={['backend', 'async']} stringLiteral={literals.getMongo} >
+        </FunctionDoc>
+        <FunctionDoc type="Method" name="getMongo" returns="Promise<mongodb.Db>" filePath="server/db/getMongo.ts" labels={['backend', 'async']} stringLiteral={literals.getMongo} >
           <div className="description">
             Returns the globally defined MongoDB <ExternalLink to="https://mongodb.github.io/node-mongodb-native/4.11/classes/Db.html">Db class</ExternalLink> instance
             <div className="detail">You can use the returned DB class instance for raw MongoDB queries</div>
           </div>
-        </CodeDoc>
+        </FunctionDoc>
       </Segment.Group>
       <H3 italic>Middleware</H3>
       <Segment.Group>
-        <CodeDoc type="Middleware" name="useDb"
+        <FunctionDoc type="Middleware" name="useDb" returns="void"
           filePath="server/middleware/useDb.ts"
           labels={['backend', 'middleware']}
           stringLiteral={literals.useDb}>
@@ -40,7 +41,7 @@ const Database = () => {
             <div className="detail">Any Mongoose model operations are <ExternalLink to="https://mongoosejs.com/docs/connections.html#buffering">buffered</ExternalLink>, so you don't need to <C>await</C> the connection promise</div>
           </div>
 
-        </CodeDoc>
+        </FunctionDoc>
       </Segment.Group>
     </Segment>
   )

@@ -29,7 +29,7 @@ const Authentication = () => {
       </ComponentDoc>
       <H3 italic>Hooks</H3>
 
-      <FunctionDoc name='useAuth()' returns="AuthToken | null" type="Hook" filePath="client/src/util/AuthContext.tsx" stringLiteral={literals.useAuth}>
+      <FunctionDoc name='useAuth' returns="AuthToken | null" type="Hook" filePath="client/src/util/AuthContext.tsx" stringLiteral={literals.useAuth}>
         <div className="description">A hook that returns <C>AuthContext.user</C>. Always up to date because the AuthService checks headers on every request</div>
       </FunctionDoc>
     </Segment>

@@ -2,7 +2,7 @@ import { Segment } from "semantic-ui-react"
 import { H2, H3 } from "../components/basic-html/Headers"
 import ExternalLink from "../components/helpers/ExternalLink"
 import ClassDoc from "./ClassDoc"
-import CodeDoc from "./CodeDoc"
+import FunctionDoc from "./FunctionDoc"
 
 const ApiHandler = () => {
   return (
@@ -25,15 +25,30 @@ const ApiHandler = () => {
         <div className="description">This class provides all the nessecary methods to make seamless requests between client and server</div>
       </ClassDoc>
       <H3 italic>Helper Methods</H3>
-      <CodeDoc name="jsonRequest" filePath="import { jsonRequest } from '@codewizard-dt/axios-api-handler'" type="Method" stringLiteral={literals.jsonRequest}>
+      <FunctionDoc name="jsonRequest"
+        params={[['data', 'any'], ['headers', 'AxiosHeaders']]}
+        returns="string"
+        filePath="import { jsonRequest } from '@codewizard-dt/axios-api-handler'"
+        type="Method"
+        stringLiteral={literals.jsonRequest}>
         <div className="description">Stringifies the data and sets a header if data is not a string<div className="detail">Automatically applied to AxiosApi class</div></div>
-      </CodeDoc>
-      <CodeDoc name="jsonResponse" filePath="import { jsonResponse } from '@codewizard-dt/axios-api-handler'" type="Method" stringLiteral={literals.jsonResponse}>
+      </FunctionDoc>
+      <FunctionDoc name="jsonResponse"
+        params={[['data', 'any'], ['headers', 'AxiosHeaders']]}
+        returns="string | object"
+        filePath="import { jsonResponse } from '@codewizard-dt/axios-api-handler'"
+        type="Method"
+        stringLiteral={literals.jsonResponse}>
         <div className="description">Parses JSON data into an object, else returns original data<div className="detail">Automatically applied to AxiosApi class</div></div>
-      </CodeDoc>
-      <CodeDoc name="responseHandler<T>" filePath="import { responseHandler } from '@codewizard-dt/axios-api-handler'" type="Method" stringLiteral={literals.responseHandler}>
+      </FunctionDoc>
+      <FunctionDoc name="responseHandler<T>"
+        params={[['res', 'AxiosResponse']]}
+        returns="T | ApiResponseError"
+        filePath="import { responseHandler } from '@codewizard-dt/axios-api-handler'"
+        type="Method"
+        stringLiteral={literals.responseHandler}>
         <div className="description">Destructures the AxiosResponse and returns the data object.<div className="detail">Automatically applied to AxiosApi class</div></div>
-      </CodeDoc>
+      </FunctionDoc>
     </Segment >
   )
 }

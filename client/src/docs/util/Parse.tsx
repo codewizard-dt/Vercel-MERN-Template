@@ -25,9 +25,9 @@ export const getFullName = ({ name, extendedName, params, returns }: Pick<CodeDo
     return <>
       {typedName}{extendedName && <> <span className='extends'>extends</span> {parseTypeAnnotation(extendedName)}</>}
     </>
-  } else if (params) {
+  } else if (returns) {
     return <>
-      {typedName}<span className='params'>({params.map(([param, type], i) => <span key={i}><b>{param}</b>: {type}</span>)})</span>
+      {typedName}{params && <span className='params'>({params.map(([param, type], i) => <span key={i}><b>{param}</b><span className="param-type-annotation">{`: ${type}`}</span></span>)})</span>}<span className="returns">: {parseTypeAnnotation(returns)}</span>
     </>
   } else {
     return typedName

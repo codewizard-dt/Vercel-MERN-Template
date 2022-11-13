@@ -42,9 +42,7 @@ function App() {
           <Route path='/' element={<AuthGuard type="user" />}>
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
-          <Route path='/' element={
-            <FormProvider children={<AuthGuard type="guest" />} />
-          }>
+          <Route path='/' element={<FormProvider children={<AuthGuard type="guest" />} />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<RegisterForm />} />
           </Route>

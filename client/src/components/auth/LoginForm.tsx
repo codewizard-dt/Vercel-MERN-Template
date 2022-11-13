@@ -1,13 +1,13 @@
 import { FormProvider, useForm } from '@codewizard-dt/use-form-hook';
 import { useNavigate } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import { useAuthMethods } from '../../util/AuthContext';
+import { AuthResponse, useAuthMethods } from '../../util/AuthContext';
 import { H1 } from '../basic-html/Headers';
 
 
 const LoginForm = () => {
   const auth = useAuthMethods()
-  const Form = useForm()
+  const Form = useForm<AuthResponse>()
   const navigate = useNavigate()
 
   const submit = async (credentials: any) => auth.login(credentials)
@@ -15,7 +15,7 @@ const LoginForm = () => {
   return <Container text>
     <H1>Vercel MERN Stack</H1>
     <FormProvider>
-      <Form submitBtnText='Login' submit={submit} fields={[
+      <Form submitBtnText='Login' onSubmit={submit} fields={[
         { name: 'username' },
         { name: 'password', type: 'password' }
       ]}
